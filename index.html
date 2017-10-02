@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>JQuery Extend Objects with jquery.Extend</title>
+
+</head>
+<body>
+
+
+<script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<script type="text/Javascript">
+(function($) {
+  $.fn.myPlugin = function(options) {
+    options = $.extend({
+      message: 'Hello, world!',
+      css: {
+        color: 'red'
+      }
+    }, options);
+    return this.each(function() {
+      $(this).css(options.css).html(options.message);
+    });
+  };
+})(jQuery);
+
+var obj = { hello: 'world' };
+obj = $.extend(obj, { hello: 'big world' }, {foo: 'bar'});
+
+alert( obj.hello ); // Alerts 'big world'
+alert( obj.foo ); // Alerts 'bar'
+
+
+
+</script>
+</body>
+</html>
